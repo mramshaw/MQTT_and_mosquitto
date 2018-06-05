@@ -103,3 +103,6 @@ This can be illustrated as follows:
 5) Close down the broker (first terminal) with Ctrl-C.
 
 Simple!
+
+[Note that messages are not _queued_ - subscribers will only receive messages
+that are published when they are actively subscribed.]
