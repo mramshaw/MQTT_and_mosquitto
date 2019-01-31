@@ -92,6 +92,12 @@ This can be illustrated as follows:
     mosquitto_pub -t "test/topic" -m "Hello world!"
 	```
 	
+    Or use the Golang publish component as follows:
+
+	```
+    go run mqtt_publish.go
+	```
+
     In the first terminal, the broker should register the connection and disconnection of a publisher.
 
     In the second terminal, the subscriber should echo the message sent by the publisher.
@@ -106,3 +112,14 @@ Simple!
 
 [Note that messages are not _queued_ - subscribers will only receive messages
 that are published when they are actively subscribed.]
+
+## Reference
+
+Golang MQTT package:
+
+    http://godoc.org/github.com/eclipse/paho.mqtt.golang
+
+## To Do
+
+- [x] Write a Golang MQTT publish component
+- [ ] Parameterize the publish component a la 'mosquitto_pub'
