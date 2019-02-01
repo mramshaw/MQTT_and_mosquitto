@@ -38,7 +38,7 @@ Note that __MQ__ is _not_ short for __Message Queue__. The differences are as fo
 
 - In queues, a message is stored until it is consumed (no such thing takes place with MQTT)
 - In queues, a message is only consumed by one client (in MQTT, any number of clients may be subscribed to a topic)
-- A queue is much more heavyweight than a topic (a queue is named and must be explicitly created while a topic is very lightweight)
+- A queue is much more heavyweight than a topic (a queue is named and must be explicitly created while a topic is lightweight)
 
 ## Mosquitto
 
@@ -77,7 +77,6 @@ Unusually, the Mosquitto source code does not include a __configure__ script. Ho
 4) Verify Mosquitto version via <kbd>mosquitto -h</kbd>:
 
     ```
-    mosquitto -h
     mosquitto version 1.5.5
     
     mosquitto is an MQTT v3.1.1 broker.
@@ -93,8 +92,6 @@ Unusually, the Mosquitto source code does not include a __configure__ script. Ho
           any logging options given in the config file.
     
     See http://mosquitto.org/ for more information.
-    
-    $
     ```
 
 #### Running Mosquitto 
@@ -149,8 +146,9 @@ This can be illustrated as follows:
 
 Simple!
 
-[Note that messages are not _queued_ - subscribers will only receive messages
-that are published when they are actively subscribed.]
+[In the example shown, messages are not _queued_ - so that subscribers will only receive
+ messages that are published when they are actively subscribed. However specifying QoS
+ values other than zero (the default) or specifying message retention will affect this.]
 
 ## Reference
 
