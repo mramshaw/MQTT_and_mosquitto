@@ -1,10 +1,20 @@
 # MQTT and Mosquitto
+
 A quick introduction to MQTT and Mosquitto
+
+The contents are as follows:
+
+* [Overview](#overview)
+* [Mosquitto](#mosquitto)
+    * [Installing Mosquitto](#installing-mosquitto)
+    * [Running Mosquitto](#running-mosquitto)
+* [Reference](#reference)
+* [To Do](#to-do)
+* [Credits](#credits)
 
 ## Overview
 
 [MQTT](http://mqtt.org/) (which is now an [ISO Standard](https://www.iso.org/standard/69466.html)) is a "machine-to-machine" (M2M) or "Internet of Things" (IoT) connectivity protocol.
-
 
 Sensors and small devices (such as the Arduino or Raspberry Pi) typically communicate via this protocol. Its low overhead and small client libraries make it a good fit for M2M/IOT applications.
 
@@ -12,17 +22,23 @@ Whereas other protocols assume "always-on" state and "always-available" communic
 
 From the [FAQ](http://mqtt.org/faq):
 
-  MQTT stands for MQ Telemetry Transport. It is a publish/subscribe, extremely simple and lightweight messaging protocol, designed for constrained devices and low-bandwidth, high-latency or unreliable networks.
+> MQTT stands for MQ Telemetry Transport. It is a publish/subscribe, extremely simple and lightweight messaging protocol, designed for constrained devices and low-bandwidth, high-latency or unreliable networks.
 
 And:
 
-  These principles also turn out to make the protocol ideal of the emerging “machine-to-machine” (M2M) or “Internet of Things” world of connected devices, and for mobile applications where bandwidth and battery power are at a premium.
+> These principles also turn out to make the protocol ideal of the emerging “machine-to-machine” (M2M) or “Internet of Things” world of connected devices, and for mobile applications where bandwidth and battery power are at a premium.
 
 And:
 
-  TCP/IP port 1883 is reserved with [IANA](http://www.iana.org/) for use with MQTT. TCP/IP port 8883 is also registered, for using MQTT over SSL.
+> TCP/IP port 1883 is reserved with [IANA](http://www.iana.org/) for use with MQTT. TCP/IP port 8883 is also registered, for using MQTT over SSL.
 
 [While MQTT usually takes place over TCP/IP, this is not a requirement. There are implementations that do not use TCP/IP.]
+
+Note that __MQ__ is _not_ short for __Message Queue__. The differences are as follows:
+
+- In queues, a message is stored until it is consumed (no such thing takes place with MQTT)
+- In queues, a message is only consumed by one client (in MQTT, any number of clients may be subscribed to a topic)
+- A queue is much more heavyweight than a topic (a queue is named and must be explicitly created while a topic is very lightweight)
 
 ## Mosquitto
 
@@ -57,6 +73,29 @@ Unusually, the Mosquitto source code does not include a __configure__ script. Ho
 	```
 
     By default Mosquitto installs to `/usr/local` and `/etc/mosquitto`.
+
+4) Verify Mosquitto version via <kbd>mosquitto -h</kbd>:
+
+    ```
+    mosquitto -h
+    mosquitto version 1.5.5
+    
+    mosquitto is an MQTT v3.1.1 broker.
+    
+    Usage: mosquitto [-c config_file] [-d] [-h] [-p port]
+    
+     -c : specify the broker config file.
+     -d : put the broker into the background after starting.
+     -h : display this help.
+     -p : start the broker listening on the specified port.
+          Not recommended in conjunction with the -c option.
+     -v : verbose mode - enable all logging types. This overrides
+          any logging options given in the config file.
+    
+    See http://mosquitto.org/ for more information.
+    
+    $
+    ```
 
 #### Running Mosquitto 
 
@@ -95,7 +134,7 @@ This can be illustrated as follows:
     Or use the Golang publish component as follows:
 
 	```
-    go run mqtt_publish.go
+    go run mqtt_publish.go -t "test/topic" -m "Hello world!"
 	```
 
     In the first terminal, the broker should register the connection and disconnection of a publisher.
@@ -119,7 +158,35 @@ Golang MQTT package:
 
     http://godoc.org/github.com/eclipse/paho.mqtt.golang
 
+[Supports TCP, TLS, and WebSockets]
+
+MQTT and CoApp:
+
+    http://www.eclipse.org/community/eclipse_newsletter/2014/february/article2.php
+
+[MQTT runs over TCP while CoApp is RESTful and runs over UDP; MQTT-SN runs over UDP.]
+
+MQTT Essentials:
+
+    http://www.hivemq.com/tags/mqtt-essentials/
+
+[This is a very nice explanation of things and a lot less dry than reading RFCs.]
+
+MQTT RFC:
+
+    http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.pdf
+
+    http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html
+
 ## To Do
 
 - [x] Write a Golang MQTT publish component
-- [ ] Parameterize the publish component a la 'mosquitto_pub'
+- [x] Upgrade to latest `mosquitto` (__1.5.5__ as of time of writing)
+- [x] Parameterize the publish component a la 'mosquitto_pub'
+- [ ] Investigate Python components (for use with - say - a Raspberry Pi)
+
+## Credits
+
+Publish code adapted from the Eclipse Paho client code:
+
+    http://www.eclipse.org/paho/clients/golang/
