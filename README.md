@@ -134,6 +134,12 @@ This can be illustrated as follows:
     go run mqtt_publish.go -t "test/topic" -m "Hello world!"
 	```
 
+    Or use the Python publish component as follows:
+
+	```
+    python3 mqtt_publish.py -t "test/topic" -m "Hello world!"
+	```
+
     In the first terminal, the broker should register the connection and disconnection of a publisher.
 
     In the second terminal, the subscriber should echo the message sent by the publisher.
@@ -158,6 +164,10 @@ Golang MQTT package:
 
 [Supports TCP, TLS, and WebSockets]
 
+Python MQTT package:
+
+    http://www.eclipse.org/paho/clients/python/docs/
+
 MQTT and CoApp:
 
     http://www.eclipse.org/community/eclipse_newsletter/2014/february/article2.php
@@ -181,10 +191,10 @@ MQTT RFC:
 - [x] Write a Golang MQTT publish component
 - [x] Upgrade to latest `mosquitto` (__1.5.5__ as of time of writing)
 - [x] Parameterize the publish component a la 'mosquitto_pub'
-- [ ] Investigate Python components (for use with - say - a Raspberry Pi)
+- [x] Write a Python MQTT publish component (for use with - say - a Raspberry Pi)
 
 ## Credits
 
-Publish code adapted from the Eclipse Paho client code:
+Golang Publish code adapted from the Eclipse Paho client code:
 
     http://www.eclipse.org/paho/clients/golang/
