@@ -178,6 +178,8 @@ From:
 > You can use either the MQTT protocol directly or MQTT over WebSocket to publish and subscribe.
 > You can use the HTTP REST interface to publish.
 
+It may not be clear from the above, but AWS IoT ___only___ supports secured MQTT - unsecured MQTT is not an option.
+
 One aspect of AWS IoT is that each device MUST have a unique client ID (this could be the device serial number,
 for instance). For security reasons, duplicate client IDs are not permitted.
 
