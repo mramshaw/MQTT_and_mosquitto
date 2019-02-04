@@ -8,13 +8,19 @@ The contents are as follows:
 * [Mosquitto](#mosquitto)
     * [Installing Mosquitto](#installing-mosquitto)
     * [Running Mosquitto](#running-mosquitto)
+* [Cloud](#cloud)
+    * [AWS](#aws)
+    * [Google](#google)
+    * [Azure](#azure)
 * [Reference](#reference)
 * [To Do](#to-do)
 * [Credits](#credits)
 
 ## Overview
 
-[MQTT](http://mqtt.org/) (which is now an [ISO Standard](https://www.iso.org/standard/69466.html)) is a "machine-to-machine" (M2M) or "Internet of Things" (IoT) connectivity protocol.
+[MQTT](http://mqtt.org/) (which is now an [ISO Standard](https://www.iso.org/standard/69466.html)) is an "Internet of Things" (IoT) connectivity protocol.
+
+It is a "machine-to-machine" (M2M) connectivity protocol - as opposed to a "machine-to-human" (M2H) connectivity protocol.
 
 Sensors and small devices (such as the Arduino or Raspberry Pi) typically communicate via this protocol. Its low overhead and small client libraries make it a good fit for M2M/IOT applications.
 
@@ -156,13 +162,63 @@ Simple!
  messages that are published when they are actively subscribed. However specifying QoS
  values other than zero (the default) or specifying message retention will affect this.]
 
+## Cloud
+
+MQTT is usually the protocol used for providing what is often called ___telemetry___ data.
+
+#### AWS
+
+[AWS IoT](http://aws.amazon.com/iot/) Message brokers include secure MQTT (presumably MQTT-SN) as an option.
+
+From:
+
+    http://docs.aws.amazon.com/iot/latest/developerguide/what-is-aws-iot.html
+
+> Provides a secure mechanism for devices and AWS IoT applications to publish and receive messages from each other.
+> You can use either the MQTT protocol directly or MQTT over WebSocket to publish and subscribe.
+> You can use the HTTP REST interface to publish.
+
+One aspect of AWS IoT is that each device MUST have a unique client ID (this could be the device serial number,
+for instance). For security reasons, duplicate client IDs are not permitted.
+
+AWS IoT only offers QoS 0 (at most once) and QoS 1 (at least once). As of the time of this writing (February,
+2019) AWS IoT does not offer QoS 2 (exactly once).
+
+As a payload, AWS IoT has native support for JSON.
+
+#### Google
+
+Google's Pub/Sub broker can apparently handle MQTT messages (as well as other protocols).
+
+#### Azure
+
+Azure apparently supports AMPQ, MQTT and HTTP. Azure also has the IoT Protocol Gateway:
+
+    http://github.com/Azure/azure-iot-protocol-gateway
+
+[This is for devices that do not support AMPQ, MQTT or HTTP.]
+
 ## Reference
+
+AWS IoT terms:
+
+    http://docs.aws.amazon.com/iot/latest/developerguide/what-is-aws-iot.html
+
+[The state of a ___thing___ (IoT device) is persisted as a device ___shadow___.]
 
 Golang MQTT package:
 
     http://godoc.org/github.com/eclipse/paho.mqtt.golang
 
 [Supports TCP, TLS, and WebSockets]
+
+node.js MQTT package:
+
+    http://www.npmjs.com/package/mqtt
+
+Promise wrapper over node.js MQTT package:
+
+    http://github.com/mqttjs/async-mqtt
 
 Python MQTT package:
 
@@ -192,6 +248,8 @@ MQTT RFC:
 - [x] Upgrade to latest `mosquitto` (__1.5.5__ as of time of writing)
 - [x] Parameterize the publish component a la 'mosquitto_pub'
 - [x] Write a Python MQTT publish component (for use with - say - a Raspberry Pi)
+- [ ] Write a node.js MQTT publish component (apparently the premiere language for AWS IoT)
+- [ ] Investigate the IoT offerings from [Google](http://cloud.google.com/solutions/iot/), IBM (Watson) and Microsoft (Azure)
 
 ## Credits
 
