@@ -1,5 +1,7 @@
 # MQTT and Mosquitto
 
+[![Known Vulnerabilities](http://snyk.io/test/github/mramshaw/MQTT_and_mosquitto/badge.svg?style=plastic&targetFile=requirements.txt)](http://snyk.io/test/github/mramshaw/MQTT_and_mosquitto?style=plastic&targetFile=requirements.txt)
+
 A quick introduction to MQTT and Mosquitto
 
 The contents are as follows:
@@ -251,6 +253,7 @@ MQTT RFC:
 - [x] Parameterize the publish component a la 'mosquitto_pub'
 - [x] Write a Python MQTT publish component (for use with - say - a Raspberry Pi)
 - [ ] Write a node.js MQTT publish component (apparently the premiere language for AWS IoT)
+- [x] Add a Snyk.io vulnerability scan badge
 - [ ] Investigate the IoT offerings from [Google](http://cloud.google.com/solutions/iot/), IBM (Watson) and Microsoft (Azure)
 
 ## Credits
