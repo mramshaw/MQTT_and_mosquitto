@@ -1,0 +1,36 @@
+{
+  "name": "mqtt_and_mosquitto",
+  "version": "1.0.0",
+  "description": "A quick test of MQTT and Mosquitto",
+  "main": "mqtt_publish.js",
+  "scripts": {
+    "eslint": "eslint",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mramshaw/MQTT_and_mosquitto.git"
+  },
+  "keywords": [
+    "mqtt",
+    "mosquitto",
+    "iot",
+    "pubsub",
+    "publish-subscribe",
+    "message-broker",
+    "iiot"
+  ],
+  "author": "Martin Ramshaw",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mramshaw/MQTT_and_mosquitto/issues"
+  },
+  "homepage": "https://github.com/mramshaw/MQTT_and_mosquitto#readme",
+  "dependencies": {
+    "minimalist": "^1.0.0",
+    "mqtt": "^2.18.8"
+  },
+  "devDependencies": {
+    "eslint": "^5.13.0"
+  }
+}

@@ -1,6 +1,7 @@
 # MQTT and Mosquitto
 
-[![Known Vulnerabilities](http://snyk.io/test/github/mramshaw/MQTT_and_mosquitto/badge.svg?style=plastic&targetFile=requirements.txt)](http://snyk.io/test/github/mramshaw/MQTT_and_mosquitto?style=plastic&targetFile=requirements.txt)
+node.js [![Known Vulnerabilities](http://snyk.io/test/github/mramshaw/MQTT_and_mosquitto/badge.svg?style=plastic&targetFile=package.json)](http://snyk.io/test/github/mramshaw/MQTT_and_mosquitto?style=plastic&targetFile=package.json)
+Python [![Known Vulnerabilities](http://snyk.io/test/github/mramshaw/MQTT_and_mosquitto/badge.svg?style=plastic&targetFile=requirements.txt)](http://snyk.io/test/github/mramshaw/MQTT_and_mosquitto?style=plastic&targetFile=requirements.txt)
 
 A quick introduction to MQTT and Mosquitto
 
@@ -142,6 +143,12 @@ This can be illustrated as follows:
     go run mqtt_publish.go -t "test/topic" -m "Hello world!"
 	```
 
+    Or use the node.js publish component as follows:
+
+	```
+    node mqtt_publish.js -t "test/topic" -m "Hello world!"
+	```
+
     Or use the Python publish component as follows:
 
 	```
@@ -252,7 +259,7 @@ MQTT RFC:
 - [x] Upgrade to latest `mosquitto` (__1.5.5__ as of time of writing)
 - [x] Parameterize the publish component a la 'mosquitto_pub'
 - [x] Write a Python MQTT publish component (for use with - say - a Raspberry Pi)
-- [ ] Write a node.js MQTT publish component (apparently the premiere language for AWS IoT)
+- [x] Write a node.js MQTT publish component (apparently the premiere language for AWS IoT)
 - [x] Add a Snyk.io vulnerability scan badge
 - [ ] Investigate the IoT offerings from [Google](http://cloud.google.com/solutions/iot/), IBM (Watson) and Microsoft (Azure)
 
