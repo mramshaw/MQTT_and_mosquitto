@@ -1,8 +1,5 @@
 # MQTT and Mosquitto
 
-node.js [![Known Vulnerabilities](http://snyk.io/test/github/mramshaw/MQTT_and_mosquitto/badge.svg?style=plastic&targetFile=package.json)](http://snyk.io/test/github/mramshaw/MQTT_and_mosquitto?style=plastic&targetFile=package.json)
-Python [![Known Vulnerabilities](http://snyk.io/test/github/mramshaw/MQTT_and_mosquitto/badge.svg?style=plastic&targetFile=requirements.txt)](http://snyk.io/test/github/mramshaw/MQTT_and_mosquitto?style=plastic&targetFile=requirements.txt)
-
 A quick introduction to MQTT and Mosquitto
 
 The contents are as follows:
@@ -137,22 +134,23 @@ This can be illustrated as follows:
     mosquitto_pub -t "test/topic" -m "Hello world!"
 	```
 	
-    Or use the Golang publish component as follows:
+    Or use the [Golang](./golang/) publish component as follows:
 
 	```
+    cd golang
     go run mqtt_publish.go -t "test/topic" -m "Hello world!"
 	```
 
-    Or use the node.js publish component as follows:
+    Or use the [node.js](./node.js/) publish component as follows:
 
 	```
-    node mqtt_publish.js -t "test/topic" -m "Hello world!"
+    node node.js/mqtt_publish.js -t "test/topic" -m "Hello world!"
 	```
 
-    Or use the Python publish component as follows:
+    Or use the [Python](./python/) publish component as follows:
 
 	```
-    python3 mqtt_publish.py -t "test/topic" -m "Hello world!"
+    python3 python/mqtt_publish.py -t "test/topic" -m "Hello world!"
 	```
 
     In the first terminal, the broker should register the connection and disconnection of a publisher.
@@ -261,6 +259,7 @@ MQTT RFC:
 - [x] Write a Python MQTT publish component (for use with - say - a Raspberry Pi)
 - [x] Write a node.js MQTT publish component (apparently the premiere language for AWS IoT)
 - [x] Add a Snyk.io vulnerability scan badge
+- [x] Repackage source code to allow for Snyk.io scanning
 - [ ] Investigate the IoT offerings from [Google](http://cloud.google.com/solutions/iot/), IBM (Watson) and Microsoft (Azure)
 
 ## Credits
