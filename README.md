@@ -191,7 +191,7 @@ One aspect of AWS IoT is that each device MUST have a unique client ID (this cou
 for instance). For security reasons, duplicate client IDs are not permitted.
 
 AWS IoT only offers QoS 0 (at most once) and QoS 1 (at least once). As of the time of this writing (February,
-2019) AWS IoT does not offer QoS 2 (exactly once).
+2019) AWS IoT does not offer QoS 2 (exactly once). [Perhaps they are using [mosca](http://www.mosca.io/).]
 
 As a payload, AWS IoT has native support for JSON.
 
