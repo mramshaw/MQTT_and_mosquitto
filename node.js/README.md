@@ -24,10 +24,10 @@ Promise wrapper over node.js MQTT package:
 
     http://github.com/mqttjs/async-mqtt
 
-[Actually, looks more like __async/await__ than __promises__.]
+[As well as __promises__, also seems to offer __async/await__ (ECMAScript 2017).]
 
 ## To Do
 
 - [x] Add a Snyk.io vulnerability scan badge
 - [x] Write a node.js MQTT publish component
-- [ ] Refactor node.js MQTT publish component for async/await
+- [x] Refactor node.js MQTT publish component for async/await

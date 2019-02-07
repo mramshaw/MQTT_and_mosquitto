@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/mramshaw/MQTT_and_mosquitto#readme",
   "dependencies": {
+    "async-mqtt": "^2.0.0",
     "minimalist": "^1.0.0",
     "mqtt": "^2.18.8"
   },

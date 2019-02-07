@@ -1,9 +1,9 @@
 'use strict';
 
-const minimalist = require('minimist')
-const mqtt = require('mqtt');
+const minimist = require('minimist')
+const mqtt = require('async-mqtt');
 
-const args = minimalist(process.argv.slice(2), {  
+const args = minimist(process.argv.slice(2), {
     alias: {
         h: 'help',
         H: 'Host',
@@ -29,14 +29,14 @@ const usage =
                        [-q {0,1,2}] [-r]
 
 optional arguments:
-  -h         show this help message and exit
-  -H HOST    the host to publish to
-  -p PORT    the port to publish to
-  -t TOPIC   the topic to publish to
-  -m MESSAGE the message to publish
-  -q {0,1,2} Quality of Service (0 = At Most Once,
+  -h          show this help message and exit
+  -H HOST     the host to publish to
+  -p PORT     the port to publish to
+  -t TOPIC    the topic to publish to
+  -m MESSAGE  the message to publish
+  -q {0,1,2}  Quality of Service (0 = At Most Once,
                 1 = At Least Once, 2 = Exactly Once)
-  -r         whether or not the message should be retained
+  -r          whether or not the message should be retained
 `
 
 if (args.help == true) {
@@ -44,40 +44,35 @@ if (args.help == true) {
     process.exit(1);
 }
 
-let count = 0;
+const mqtt_server = `tcp://${args.Host}:${args.port}`;
 
-const client = mqtt.connect(`tcp://${args.Host}:${args.port}`, {
-    clientId: 'mqtt-node.js'
+const mqtt_client = mqtt.connect(mqtt_server, {
+        clientId: 'mqtt-node.js'
 });
 
-//handle connection callback
-client.on('connect', function() {
-    console.log(`connected: ${client.connected}`);
-})
+// Set timeout on connection, in case MQTT server not up
+//     or wrong host / port specified
+const connect_timeout = setTimeout(function() {
+    console.log(`Can't connect to MQTT host '${mqtt_server}' - timeout exceeded`);
+    process.exit(1);
+}, 2 * 1000);
 
-//handle error callback
-client.on('error', function(error) {
-    console.log(`Can't connect: ${error}`);
+// Handle error callback (connection options)
+mqtt_client.on('error', function(error) {
+    console.log(`Can't connect to MQTT host '${mqtt_server}': ${error}`);
     process.exit(1);
 });
 
-function publish(topic, msg, options) {
+// Handle successful connection
+mqtt_client.on('connect', function() {
+    clearTimeout(connect_timeout);
+    publish(args.topic, args.message, {
+        retain: args.retain,
+        qos: args.qos
+    });
+    mqtt_client.end();
+});
 
-    if (client.connected == true) {
-        console.log(`publishing: ${msg}`);
-        client.publish(topic, msg, options);
-    }
-    count += 1;
-    if (count == 1)
-        clearTimeout(timer_id);
-    client.end();
-}
-
-const options = {
-    retain: args.retain,
-    qos: args.qos
+async function publish(topic, msg, options) {
+    await mqtt_client.publish(topic, msg, options);
 };
-
-const timer_id = setInterval(function() {
-    publish(args.topic, args.message, options);
-}, 3000);
