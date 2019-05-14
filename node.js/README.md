@@ -31,3 +31,4 @@ Promise wrapper over node.js MQTT package:
 - [x] Add a Snyk.io vulnerability scan badge
 - [x] Write a node.js MQTT publish component
 - [x] Refactor node.js MQTT publish component for async/await
+- [x] Add `mqtt-packet` as a dependency for security reasons
