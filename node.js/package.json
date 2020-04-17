@@ -1,6 +1,6 @@
 {
   "name": "mqtt_and_mosquitto",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A quick test of MQTT and Mosquitto",
   "main": "mqtt_publish.js",
   "scripts": {
@@ -21,7 +21,7 @@
     "iiot"
   ],
   "author": "Martin Ramshaw",
-  "license": "ISC",
+  "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/mramshaw/MQTT_and_mosquitto/issues"
   },

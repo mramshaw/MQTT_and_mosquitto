@@ -72,6 +72,9 @@ Unusually, the Mosquitto source code does not include a __configure__ script. Ho
     make test
 	```
 
+    [Mosquitto has an impressive test suite.]
+
+
 3) Install Mosquitto:
 
 	```
@@ -82,8 +85,9 @@ Unusually, the Mosquitto source code does not include a __configure__ script. Ho
 
 4) Verify Mosquitto version via <kbd>mosquitto -h</kbd>:
 
-    ```
-    mosquitto version 1.5.5
+	```bash
+    $ mosquitto -h
+    mosquitto version 1.6.9
     
     mosquitto is an MQTT v3.1.1 broker.
     
@@ -98,7 +102,9 @@ Unusually, the Mosquitto source code does not include a __configure__ script. Ho
           any logging options given in the config file.
     
     See http://mosquitto.org/ for more information.
-    ```
+    
+    $
+	```
 
 #### Running Mosquitto 
 
@@ -254,7 +260,7 @@ MQTT RFC:
 ## To Do
 
 - [x] Write a Golang MQTT publish component
-- [x] Upgrade to latest `mosquitto` (__1.5.5__ as of time of writing)
+- [x] Upgrade to latest `mosquitto` (__1.6.9__ as of time of writing)
 - [x] Parameterize the publish component a la 'mosquitto_pub'
 - [x] Write a Python MQTT publish component (for use with - say - a Raspberry Pi)
 - [x] Write a node.js MQTT publish component (apparently the premiere language for AWS IoT)
