@@ -171,6 +171,33 @@ This can be illustrated as follows:
 
 Simple!
 
+If all of the above steps are followed, the first console should look as follows:
+
+```bash
+$ mosquitto
+1596222023: mosquitto version 1.6.9 starting
+1596222023: Using default config.
+1596222023: Opening ipv4 listen socket on port 1883.
+1596222023: Opening ipv6 listen socket on port 1883.
+1596222036: New connection from 127.0.0.1 on port 1883.
+1596222036: New client connected from 127.0.0.1 as mosq-novRAfKR4zopIIGSOk (p2, c1, k60).
+1596222059: New connection from 127.0.0.1 on port 1883.
+1596222059: New client connected from 127.0.0.1 as mosq-aAwadr3XwPTb9noZmJ (p2, c1, k60).
+1596222059: Client mosq-aAwadr3XwPTb9noZmJ disconnected.
+1596222099: New connection from 127.0.0.1 on port 1883.
+1596222099: New client connected from 127.0.0.1 as go-mqtt-publish (p2, c1, k30).
+1596222099: Client go-mqtt-publish disconnected.
+1596222132: New connection from 127.0.0.1 on port 1883.
+1596222132: New client connected from 127.0.0.1 as mqtt-node.js (p2, c1, k60).
+1596222132: Client mqtt-node.js disconnected.
+1596222156: New connection from 127.0.0.1 on port 1883.
+1596222156: New client connected from 127.0.0.1 as python-mqtt-publish (p2, c1, k60).
+1596222156: Client python-mqtt-publish disconnected.
+1596222205: Client mosq-novRAfKR4zopIIGSOk disconnected.
+^C1596222210: mosquitto version 1.6.9 terminating
+$
+```
+
 [In the example shown, messages are not _queued_ - so that subscribers will only receive
  messages that are published when they are actively subscribed. However specifying QoS
  values other than zero (the default) or specifying message retention will affect this.]
@@ -266,6 +293,7 @@ MQTT RFC:
 - [x] Write a node.js MQTT publish component (apparently the premiere language for AWS IoT)
 - [x] Add a Snyk.io vulnerability scan badge
 - [x] Repackage source code to allow for Snyk.io scanning
+- [x] Update node.js dependencies to allow for reported exploits
 - [ ] Investigate the IoT offerings from [Google](http://cloud.google.com/solutions/iot/), IBM (Watson) and Microsoft (Azure)
 
 ## Credits
