@@ -1,7 +1,5 @@
 # golang
 
-[![Known Vulnerabilities](http://snyk.io/test/github/mramshaw/MQTT_and_mosquitto/badge.svg?style=plastic&targetFile=golang/go.mod)](http://snyk.io/test/github/mramshaw/MQTT_and_mosquitto?style=plastic&targetFile=golang/go.mod)
-
 A `golang` MQTT publish component
 
 ## To Run
