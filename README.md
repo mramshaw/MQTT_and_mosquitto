@@ -234,11 +234,11 @@ Google's Pub/Sub broker can apparently handle MQTT messages (as well as other pr
 
 #### Azure
 
-Azure apparently supports AMPQ, MQTT and HTTP. Azure also has the IoT Protocol Gateway:
+Azure supports [AMQP](http://en.wikipedia.org/wiki/Advanced_Message_Queuing_Protocol), MQTT and HTTP.
+
+Azure also has the IoT Protocol Gateway:
 
     http://github.com/Azure/azure-iot-protocol-gateway
-
-[This is for devices that do not support AMPQ, MQTT or HTTP.]
 
 ## Reference
 
